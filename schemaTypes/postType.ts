@@ -1,5 +1,4 @@
 import { defineType, defineField } from 'sanity'
-import { seo } from './seo'
 
 export const postType = defineType({
   name: 'post',
@@ -27,7 +26,8 @@ export const postType = defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
     }),
     defineField({
       name: 'category',
@@ -67,31 +67,19 @@ export const postType = defineType({
       initialValue: false,
     }),
     defineField({
-      name: 'views',
-      title: 'Views',
-      type: 'string',
-    }),
-    defineField({
-      name: 'likes',
-      title: 'Likes',
-      type: 'number',
-    }),
-    defineField({
-      name: 'comments',
-      title: 'Comments',
-      type: 'number',
-    }),
-    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'tag' }] }],
     }),
-    defineField({
-      name: "sections",
-      title: "Page Sections",
-      type: "array",
-      of: [seo],
-    }),
+   defineField({
+    name: 'seo',
+    title: 'SEO',
+    type: 'object',
+    fields: [
+      { name: 'title', title: 'Title', type: 'string' },
+      { name: 'description', title: 'Description', type: 'text' },
+    ],
+  })
   ],
 })
