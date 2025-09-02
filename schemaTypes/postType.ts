@@ -1,5 +1,10 @@
 import { defineType, defineField } from 'sanity'
 
+export const HeadingsOptions = [
+  { title: 'Heading 2', value: 'h2' },
+  { title: 'Heading 3', value: 'h3' },
+]
+
 export const postType = defineType({
   name: 'post',
   title: 'Post',
@@ -72,14 +77,23 @@ export const postType = defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'tag' }] }],
     }),
-   defineField({
-    name: 'seo',
-    title: 'SEO',
-    type: 'object',
-    fields: [
-      { name: 'title', title: 'Title', type: 'string' },
-      { name: 'description', title: 'Description', type: 'text' },
-    ],
-  })
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'object',
+      fields: [
+        { name: 'title', title: 'Title', type: 'string' },
+        { name: 'description', title: 'Description', type: 'text' },
+      ],
+    }),
+    defineField({
+      name: 'tableContent',
+      title: 'TableContent',
+      type: 'string',
+      options: {
+        list: HeadingsOptions.map(({title, value}) => ({title, value})),
+        // layout: 'radio',
+      },
+    })
   ],
 })
