@@ -58,7 +58,7 @@ export const postType = defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'text',
+      type: 'image',
     }),
     defineField({
       name: 'featured',
