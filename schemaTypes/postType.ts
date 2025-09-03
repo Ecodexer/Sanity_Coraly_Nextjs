@@ -103,7 +103,7 @@ export const postType = defineType({
         },
         {
           name: 'siteMapInclusion',
-          title: 'SiteMapInclusion',
+          title: 'SiteMap Inclusion',
           type: 'boolean',
           initialValue: false,
         },
