@@ -5,6 +5,11 @@ export const HeadingsOptions = [
   { title: 'Heading 3', value: 'h3' },
 ]
 
+export const RebotMetaTagOptions = [
+  { title: 'index/follow ', value: 'index/follow' },
+  { title: 'noindex/nofollow', value: 'noindex/nofollow' },
+]
+
 export const postType = defineType({
   name: 'post',
   title: 'Post',
@@ -70,7 +75,7 @@ export const postType = defineType({
       ],
     }),
     defineField({
-      name: 'featureds',
+      name: 'featured',
       title: 'Featured',
       type: 'boolean',
       initialValue: false,
@@ -87,7 +92,25 @@ export const postType = defineType({
       type: 'object',
       fields: [
         { name: 'title', title: 'Title', type: 'string' },
-        { name: 'description', title: 'Description', type: 'text' },
+        { name: 'description', title: 'Description', type: 'string' },
+        {
+          name: 'RebotMetaTag',
+          title: 'Rebot MetaTag',
+          type: 'string',
+          options: {
+            list: RebotMetaTagOptions.map(({ title, value }) => ({ title, value })),
+          },
+        },
+        {
+          name: 'siteMapInclusion',
+          title: 'SiteMapInclusion',
+          type: 'boolean',
+          initialValue: false,
+        },
+        { name: 'openGraphTitle', title: 'OpenGraph Title', type: 'string' },
+        { name: 'openGraphDescription', title: 'OpenGraph Description', type: 'text' },
+        { name: 'openGraphImage', title: 'OpenGraph Image', type: 'image' },
+
       ],
     }),
     defineField({
@@ -95,7 +118,7 @@ export const postType = defineType({
       title: 'TableContent',
       type: 'string',
       options: {
-        list: HeadingsOptions.map(({title, value}) => ({title, value})),
+        list: HeadingsOptions.map(({ title, value }) => ({ title, value })),
         // layout: 'radio',
       },
     })
