@@ -63,10 +63,14 @@ export const postType = defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image',
+      type: 'object',
+      fields: [
+        { name: 'imageFile', title: 'ImageFile', type: 'image' },
+        { name: 'alt', title: 'Alt', type: 'text' },
+      ],
     }),
     defineField({
-      name: 'featured',
+      name: 'featureds',
       title: 'Featured',
       type: 'boolean',
       initialValue: false,
